@@ -1,0 +1,129 @@
+<mxfile host="65bd71144e">
+    <diagram name="Objective-Physical" id="d1">
+        <mxGraphModel dx="1519" dy="999" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0" />
+                <mxCell id="1" parent="0" />
+                <mxCell id="c2" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#cccccc;spacing=8;" value="&lt;b&gt;Data-Legend&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#b85450&quot;&gt;■&lt;/font&gt; personal data (plate, token)&lt;br&gt;&lt;font color=&quot;#d79b00&quot;&gt;■&lt;/font&gt; payment data&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;■&lt;/font&gt; anonymous / no personal data&lt;br&gt;&lt;font color=&quot;#666666&quot;&gt;■&lt;/font&gt; control / technical data" vertex="1">
+                    <mxGeometry height="100" width="240" x="40" y="40" as="geometry" />
+                </mxCell>
+                <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;fontStyle=1;fontSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Company Server" vertex="1">
+                    <mxGeometry height="190" width="780" x="320" y="30" as="geometry" />
+                </mxCell>
+                <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;align=left;spacingLeft=10;" value="&lt;b&gt;Valet Parking Server&lt;/b&gt;&lt;br&gt;• Session management&lt;br&gt;• Plate recognition (ANPR)&lt;br&gt;• Parking &amp;amp; route control&lt;br&gt;• Charging management&lt;br&gt;• Billing" vertex="1">
+                    <mxGeometry height="130" width="420" x="340" y="70" as="geometry" />
+                </mxCell>
+                <mxCell id="c5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#f8cecc;strokeColor=#b85450;shape=cylinder3;boundedLbl=1;size=12;" value="&lt;b&gt;Session DB&lt;/b&gt;&lt;br&gt;plate, card token /&lt;br&gt;ticket token hash" vertex="1">
+                    <mxGeometry height="120" width="130" x="790" y="75" as="geometry" />
+                </mxCell>
+                <mxCell id="c6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#d5e8d4;strokeColor=#82b366;shape=cylinder3;boundedLbl=1;size=12;" value="&lt;b&gt;Statistics&lt;/b&gt;&lt;br&gt;anonymized /&lt;br&gt;aggregated" vertex="1">
+                    <mxGeometry height="120" width="130" x="950" y="75" as="geometry" />
+                </mxCell>
+                <mxCell id="c7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;" value="&lt;b&gt;Payment Provider&lt;/b&gt;&lt;br&gt;(external processor,&lt;br&gt;PCI DSS, DPA)" vertex="1">
+                    <mxGeometry height="110" width="200" x="1200" y="70" as="geometry" />
+                </mxCell>
+                <mxCell id="c8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;fontStyle=1;fontSize=14;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="Entry Bay" vertex="1">
+                    <mxGeometry height="370" width="340" x="40" y="300" as="geometry" />
+                </mxCell>
+                <mxCell id="c9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;" value="Plate Camera" vertex="1">
+                    <mxGeometry height="60" width="140" x="60" y="340" as="geometry" />
+                </mxCell>
+                <mxCell id="c10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;" value="Sensors" vertex="1">
+                    <mxGeometry height="60" width="140" x="220" y="340" as="geometry" />
+                </mxCell>
+                <mxCell id="c11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;align=left;spacingLeft=10;" value="&lt;b&gt;Entry Terminal&lt;/b&gt;&lt;br&gt;• Display (tariff, privacy notice)&lt;br&gt;• Card reader&lt;br&gt;• Ticket printer (QR + code)" vertex="1">
+                    <mxGeometry height="110" width="300" x="60" y="440" as="geometry" />
+                </mxCell>
+                <mxCell id="c13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;fontStyle=1;fontSize=14;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="Parking Garage" vertex="1">
+                    <mxGeometry height="370" width="400" x="440" y="300" as="geometry" />
+                </mxCell>
+                <mxCell id="c14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;" value="Infrastructure cameras&lt;br&gt;(vehicle localization)" vertex="1">
+                    <mxGeometry height="60" width="170" x="460" y="340" as="geometry" />
+                </mxCell>
+                <mxCell id="c15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;" value="&lt;b&gt;Vehicle&lt;/b&gt; (Level 4)&lt;br&gt;on-board sensors" vertex="1">
+                    <mxGeometry height="60" width="170" x="650" y="340" as="geometry" />
+                </mxCell>
+                <mxCell id="c16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;" value="Parking spaces" vertex="1">
+                    <mxGeometry height="60" width="170" x="460" y="460" as="geometry" />
+                </mxCell>
+                <mxCell id="c17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;" value="Chargers" vertex="1">
+                    <mxGeometry height="60" width="170" x="650" y="460" as="geometry" />
+                </mxCell>
+                <mxCell id="c18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;fontStyle=1;fontSize=14;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="Handover Bay / Exit" vertex="1">
+                    <mxGeometry height="370" width="360" x="900" y="300" as="geometry" />
+                </mxCell>
+                <mxCell id="c19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;" value="Plate Camera&lt;br&gt;(2nd check)" vertex="1">
+                    <mxGeometry height="60" width="150" x="920" y="340" as="geometry" />
+                </mxCell>
+                <mxCell id="c20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;" value="Obstruction / person sensors" vertex="1">
+                    <mxGeometry height="60" width="150" x="1090" y="340" as="geometry" />
+                </mxCell>
+                <mxCell id="c21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ffffff;strokeColor=#000000;align=left;spacingLeft=10;" value="&lt;b&gt;Exit Terminal&lt;/b&gt;&lt;br&gt;• Card reader&lt;br&gt;• QR scanner&lt;br&gt;• Keypad (alphanumeric code)" vertex="1">
+                    <mxGeometry height="110" width="320" x="920" y="440" as="geometry" />
+                </mxCell>
+                <mxCell id="c23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;" value="Driver" vertex="1">
+                    <mxGeometry height="60" width="30" x="165" y="683" as="geometry" />
+                </mxCell>
+                <mxCell id="c28" edge="1" parent="1" source="c11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#d79b00;fontColor=#d79b00;labelBackgroundColor=#ffffff;fontSize=11;exitX=0.75;exitY=1;entryX=0.5;entryY=1;dashed=1;exitDx=0;exitDy=0;" target="c7" value="card data&lt;br&gt;(never stored)">
+                    <mxGeometry relative="1" x="-0.2463" as="geometry">
+                        <mxPoint as="offset" />
+                        <Array as="points">
+                            <mxPoint x="285" y="700" />
+                            <mxPoint x="1300" y="700" />
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="c29" edge="1" parent="1" source="c7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#d79b00;fontColor=#d79b00;labelBackgroundColor=#ffffff;fontSize=11;startArrow=block;startFill=1;exitX=0.5;exitY=0;entryX=0.5;entryY=0;" target="c4" value="payment token, pre-auth,&lt;br&gt;settlement">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1300" y="50" />
+                            <mxPoint x="550" y="50" />
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="c33" edge="1" parent="1" source="c15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#666666;fontColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;exitX=0.25;exitY=1;entryX=0.5;entryY=0;" target="c16" value="parks">
+                    <mxGeometry relative="1" as="geometry" />
+                </mxCell>
+                <mxCell id="c38" edge="1" parent="1" source="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#b85450;fontColor=#b85450;labelBackgroundColor=#ffffff;fontSize=11;" target="c5" value="session data">
+                    <mxGeometry relative="1" as="geometry" />
+                </mxCell>
+                <mxCell id="c39" edge="1" parent="1" source="c5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#82b366;fontColor=#82b366;labelBackgroundColor=#ffffff;fontSize=11;" target="c6" value="anonymized">
+                    <mxGeometry relative="1" as="geometry" />
+                </mxCell>
+                <mxCell id="c40" edge="1" parent="1" source="c23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#666666;fontColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;exitX=0.5;exitY=0;entryX=0.4;entryY=1;" target="c11" value="card / ticket,&lt;br&gt;confirmation">
+                    <mxGeometry relative="1" as="geometry" />
+                </mxCell>
+                <mxCell id="KMqC6yde2n3bJWyDST9B-1" edge="1" parent="1" source="c21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#d79b00;fontColor=#d79b00;labelBackgroundColor=#ffffff;fontSize=11;exitX=1;exitY=0.5;entryX=0.5;entryY=1;dashed=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="c7" value="">
+                    <mxGeometry relative="1" x="-0.3896" as="geometry">
+                        <mxPoint as="offset" />
+                        <mxPoint x="1350" y="780" as="sourcePoint" />
+                        <mxPoint x="2365" y="410" as="targetPoint" />
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bundle-entry" edge="1" parent="1" source="c8" target="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#b85450;fontColor=#b85450;labelBackgroundColor=#ffffff;fontSize=11;strokeWidth=2;exitX=0.5;exitY=0;entryX=0.19;entryY=1;" value="plate text (image discarded)&lt;br&gt;card token / ticket hash&lt;br&gt;eligibility, bay empty">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="210" y="260" />
+                            <mxPoint x="420" y="260" />
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bundle-garage" edge="1" parent="1" source="c13" target="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#666666;fontColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;strokeWidth=2;startArrow=block;startFill=1;exitX=0.5;exitY=0;entryX=0.714;entryY=1;" value="driving commands (wireless)&lt;br&gt;vehicle position&lt;br&gt;charging start / stop, kWh">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="640" y="250" />
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bundle-exit" edge="1" parent="1" source="c18" target="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#b85450;fontColor=#b85450;labelBackgroundColor=#ffffff;fontSize=11;strokeWidth=2;startArrow=block;startFill=1;exitX=0.5;exitY=0;entryX=0.952;entryY=1;" value="plate text (match)&lt;br&gt;card token / QR / code&lt;br&gt;obstruction alerts">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1080" y="260" />
+                            <mxPoint x="740" y="260" />
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

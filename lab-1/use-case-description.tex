@@ -1,0 +1,388 @@
+\documentclass[11pt,a4paper]{article}
+
+% ==================================================
+% VARIABLES – adjust per lab
+% ==================================================
+\newcommand{\course}{Software and Process Notations}
+\newcommand{\labno}{1}
+\newcommand{\labtopic}{Use Case Description}
+\newcommand{\reportdate}{21 October 2026}
+\newcommand{\headernames}{Stirbu, Hosseini, Stolzlechner}
+\newcommand{\pdfauthorname}{Ricardo Stolzlechner}
+
+% Laborantenliste: \laborant{Name}{E-Mail} (eine Zeile pro Person)
+\newcommand{\members}{%
+    \member{Alex Stirbu}{astirbu-blagut.cysb-m2026@fh-salzburg.ac.at}    
+    \member{Manizheh Hosseini}{mhosseini.cysb-m2026@fh-salzburg.ac.at}
+    \member{Ricardo Stolzlechner}{ricardo@stolzlechner.at}
+}
+
+% Verwendetes KI-Werkzeug (laut KI-Richtlinie 1.0, Kap. 1.7)
+\newcommand{\aitool}{Claude Code (Anthropic, Claude Opus 5.5, token based billing)}
+
+% --------------------------------------------------
+% Packages
+% --------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=2.5cm,headheight=14pt]{geometry}
+
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+% Listings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showstringspaces=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% Title page
+\newcommand{\member}[2]{#1 & #2 \\}
+
+% Spacing
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% --------------------------------------------------
+% Header and footer
+% --------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\course}
+\rhead{\headernames}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% --------------------------------------------------
+% Hyperref settings
+% --------------------------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    pdftitle={\course\ -- Lab \labno: \labtopic},
+    pdfauthor={\pdfauthorname}
+}
+
+% ==================================================
+% Document
+% ==================================================
+\begin{document}
+
+% --------------------------------------------------
+% Page 1: Title page
+% --------------------------------------------------
+\pagenumbering{Alph}
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    {\LARGE \textbf{Lab Report - Lab Unit \labno}}\\[0.5em]
+    {\Large \labtopic}\\[0.5em]
+    {\large \course}
+
+    \vspace{3cm}
+
+    \begin{tabular}{l l}
+        \toprule
+        \textbf{Lab Member} & \textbf{E-mail} \\
+        \midrule
+        \members
+        \bottomrule
+    \end{tabular}
+
+    \vfill
+    {\large \reportdate}
+\end{titlepage}
+\pagenumbering{arabic}
+
+% --------------------------------------------------
+% Page 2: Content
+% --------------------------------------------------
+\subsection*{Use Case Name}
+
+Automated Valet Parking \& Charging (Compliance and Data Privacy
+Management)
+
+\subsection*{Description}
+
+Customers arrive at the entry terminal, the license plate is recognized and
+a session is created. The driver now has the choice to bind their identity
+to the session via a bank card through a payment token. If the driver
+cannot or does not want to use a card, a printed ticket with a QR code
+and an alphanumeric code is issued instead. The driver can optionally
+request charging, and the car is then parked automatically.
+
+\subsection*{Preconditions}
+
+\begin{itemize}
+    \item The facility is operational with at least one free space (and a free
+charger if charging is requested).
+\item The entry and exit terminals are functional, with a working card reader,
+a connection to the payment provider and ticket paper available.
+\item The vehicle is a passenger car within the size and weight limits.
+\item The privacy notice and support hours are visible at the terminal.
+\end{itemize}
+
+
+\subsection*{Postconditions}
+
+\begin{itemize}
+    \item The car was parked, charged if requested, and handed over to the
+identified driver.
+\item Payment is settled.
+\item The plate, card token or ticket token hash, and all other session
+identifiers are deleted. Only an anonymous billing record (session ID,
+timestamps, amount, kWh) remains for the legally required period.
+\item Anonymized data is available for statistics.
+\end{itemize}
+
+\subsection*{Frequency of Use}
+
+Continuous throughout the day, with peaks at commuting hours and events.
+
+\subsection*{Normal Course of Events}
+
+\begin{enumerate}
+    \item The driver drives into the entry bay and stops.
+    \item The system checks that the vehicle is eligible (type and size).
+    \item The system captures the plate image, extracts the plate text and
+    immediately discards the image.
+    \item The driver confirms the recognized plate.
+    \item The system displays the tariff, support hours and a short privacy
+    notice.
+    \item The driver optionally selects charging.
+    \item The driver taps or inserts a bank card.
+    \item The system requests a payment token (and a pre-authorization
+    reference if applicable) from the payment provider and stores only
+    the token.
+    \item The system creates the session, linking plate and card token.
+    \item The driver leaves the bay, and the system verifies that it is empty.
+    \item The system assigns a space, parks the car and starts charging if
+    requested. The session status becomes ``parked''.
+    \item The driver taps the same card at the exit terminal.
+    \item The system matches the card token to the active session.
+    \item The system brings the car to the handover bay and stops charging.
+    \item The system recognizes the plate again and matches it with the
+    session as a second check.
+    \item The system calculates the fee and settles payment with the card.
+    \item The driver takes the car.
+    \item The system closes the session and deletes plate and card token,
+    keeping only the anonymous billing record.
+\end{enumerate}
+
+\subsection*{Alternate Course}
+
+\paragraph{Ticket instead of card (fallback)}
+In step 7 the driver chooses ``no card'' (for example cash customer,
+foreign cards, or a preference for anonymity). The system generates a
+random token, stores only its hash, creates the session, and prints a
+ticket (QR code, alphanumeric code, ticket number, entry time,
+support hours). The course then continues at step 12.
+
+\paragraph{Retrieval with ticket}
+In step 12 the driver scans the QR code. If it is unreadable, the driver
+types the alphanumeric code together with the plate. The course
+continues at step 14.
+
+\paragraph{Driver leaves immediately after check-in}
+The system cancels the session, releases any pre-authorization, and
+deletes all data. Nothing is charged (or a short free grace period
+applies).
+
+\paragraph{Driver rejects the recognized plate (step 4)}
+The driver corrects it manually or aborts. If aborted, all data is
+deleted.
+
+\paragraph{Charging not requested}
+The charging steps are skipped.
+
+\subsection*{Exceptions}
+
+\paragraph{Plate not recognized}
+The system retries up to 3 times, then offers manual plate entry with
+confirmation. The system compares the typed plate with the
+captured image and calculates a confidence value. If the confidence
+is at or above the threshold, the plate is accepted and the course
+continues at step 4 of the normal course. If the confidence is below
+the threshold, the system refuses entry, discards the image, and
+instructs the driver to leave the entry bay. The driver can clean the
+plate or fix the obstruction outside and try again. No session is
+created and nothing is stored.
+
+\paragraph{Vehicle not eligible (for example a motorcycle or oversized vehicle)}
+Entry is refused before any session is created, and nothing is stored.
+
+\paragraph{No free space or charger}
+The driver is informed before a session is created. Parking without
+charging may be offered.
+
+\paragraph{Card declined or not readable at entry}
+The system allows one more attempt, then offers another card or the
+ticket path.
+
+\paragraph{Payment provider unavailable}
+The system offers the ticket path so entry remains possible. Payment
+is settled at exit. If the ticket path is also unavailable, entry is refused
+and the driver leaves the bay.
+
+\paragraph{Ticket printer out of paper or defective (ticket path only)}
+No session is created, and the driver is offered the card path. The
+system sends a maintenance alert to the operator.
+
+\paragraph{Obstruction or person detected in the bay}
+Parking is paused until the bay is clear.
+
+\paragraph{Plate mismatch at handover (step 15)}
+The car is not released, and the driver is directed to support.
+
+\paragraph{Too many failed attempts at the exit terminal}
+The session is temporarily locked and the driver is directed to
+support.
+
+\paragraph{Card and ticket lost, replaced or unusable}
+The terminal tells the driver to contact support and shows the
+support hours. At the desk, staff visually check the original ID and the
+original registration document, and confirm that the plate matches
+the parked car. If the registered holder differs from the driver, an
+authorization letter is required or the release is declined. Staff then
+release the session manually, and the plate match at the handover
+bay still applies. Nothing is scanned or copied, and the log records
+only session reference, time, staff member, documents checked and
+outcome.
+
+\paragraph{System or terminal failure}
+No session is created, and existing sessions stay intact. At entry, the
+system refuses entry and instructs the driver to leave the bay. At the
+exit terminal, the driver is directed to support.
+
+\subsection*{Includes}
+
+\begin{itemize}
+    \item Recognize License Plate (entry and handover)
+    \item Bind Payment Card to Session
+    \item Park Vehicle Automatically in Facility
+    \item Charge Vehicle
+    \item Settle Payment
+    \item Retrieve Vehicle
+\end{itemize}
+
+\subsection*{Special Requirements}
+
+\paragraph{GDPR}
+
+\begin{itemize}
+    \item The plate image is held only for the duration of plate extraction
+    and, if needed, the manual-entry confidence check. It is
+    discarded immediately afterwards, whether the plate is accepted
+    or rejected.
+    \item The plate is processed only for parking, charging and billing
+    (lawful basis: performance of the contract). The identity check
+    by customer support when card and ticket are
+    lost rests on legitimate interest, backed by a documented balancing
+    test.
+    \item Signage and a privacy notice appear before capture.
+    \item Images are discarded right after plate extraction.
+    \item Only the payment token is stored, never the card number. The
+    payment provider is a processor and needs a data processing
+    agreement.
+    \item Ticket tokens are random, never derived from the plate, and the
+    QR code contains no personal data.
+    \item Plate and token are deleted at session closure, and billing records
+    contain no plate data.
+    \item Data is stored on the company server with access control and
+    encryption, and backups follow the deletion rules.
+    \item No biometric processing, and no copies of identity documents.
+    \item Statistics use only anonymized or aggregated data.
+    \item A DPIA (Data Protection Impact Assessment (Art. 35 GDPR)) is
+    carried out before operation. That is a risk analysis regarding
+    systematic monitoring of people recorded on the facility,
+    automated recognition technology and large-scale processing.
+\end{itemize}
+
+\paragraph{Other}
+
+\begin{itemize}
+    \item No registration is required, and both card and ticket paths are
+    always offered.
+    \item Card handling follows PCI DSS (Payment Card Industry Data
+    Security Standard), by delegating card data entirely to the
+    payment provider.
+    \item Retrieval with a valid card or ticket is available 24/7. Lost
+    credential recovery is available only during support hours, which
+    are shown on the terminal and tickets.
+    \item The alphanumeric code avoids easily confused characters (0/O,
+    1/I/l).
+    \item Session creation completes within a defined time (for example
+    under 10 seconds).
+\end{itemize}
+
+\subsection*{Assumptions}
+
+\begin{itemize}
+    \item The entry area allows a driver to turn around or leave without a
+    session, so a refused driver is never stuck in the bay.
+    \item The driver has a passenger car with a valid, legible license plate
+    (motorcycles and other vehicle types are out of scope).
+    \item The car fits the size and weight limits of the facility.
+    \item The driver has a bank card or accepts the ticket path, and keeps the
+    card or ticket for the whole stay.
+    \item For recovery, the driver can come to the desk in person with ID and
+    registration document. If the papers are locked in the parked car,
+    staff may fetch them under supervision after the ID check.
+    \item The driver accepts the tariff and terms at the terminal.
+\end{itemize}
+
+% --------------------------------------------------
+% Page 3: AI disclosure
+% --------------------------------------------------
+\clearpage
+\section*{Statement on the Use of AI}
+\addcontentsline{toc}{section}{Statement on the Use of AI}
+
+In preparing this lab report, \aitool{} was used as a generative AI tool
+exclusively to assist with the following tasks:
+
+\begin{itemize}
+    \item creating and designing the \LaTeX{} layout,
+    \item checking spelling and grammar,
+    \item research.
+\end{itemize}
+
+The \LaTeX{} template of this report, including this statement, was created
+with the assistance of the AI tool and reviewed and adapted by the lab members.
+Apart from that, all content, results and conclusions were developed
+independently; no AI-generated text was adopted. The tool was used in line with
+the principles of \emph{responsible AI use} (transparency, verifiability, human
+oversight). Sources found through research were checked for accuracy
+independently. All content was reviewed, validated and finally approved by the
+lab members (cf.\ FH Salzburg AI guideline \emph{KI-Richtlinie}, version~1.0,
+ch.~1.3 and 2.1.2).
+
+\label{LastPage}
+\end{document}

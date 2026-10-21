@@ -1,0 +1,190 @@
+\documentclass[11pt,a4paper]{article}
+
+% ==================================================
+% VARIABLES – adjust per lab
+% ==================================================
+\newcommand{\course}{Software and Process Notations}
+\newcommand{\labno}{1}
+\newcommand{\labtopic}{System Sketches}
+\newcommand{\reportdate}{21 October 2026}
+\newcommand{\headernames}{Stirbu, Hosseini, Stolzlechner}
+\newcommand{\pdfauthorname}{Ricardo Stolzlechner}
+
+% Laborantenliste: \laborant{Name}{E-Mail} (eine Zeile pro Person)
+\newcommand{\members}{%
+    \member{Alex Stirbu}{astirbu-blagut.cysb-m2026@fh-salzburg.ac.at}    
+    \member{Manizheh Hosseini}{mhosseini.cysb-m2026@fh-salzburg.ac.at}
+    \member{Ricardo Stolzlechner}{ricardo@stolzlechner.at}
+}
+
+% Verwendetes KI-Werkzeug (laut KI-Richtlinie 1.0, Kap. 1.7)
+\newcommand{\aitool}{Claude Code (Anthropic, Claude Opus 5.5, token based billing)}
+
+% --------------------------------------------------
+% Packages
+% --------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=2.5cm,headheight=14pt]{geometry}
+
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+% Listings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showstringspaces=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% Title page
+\newcommand{\member}[2]{#1 & #2 \\}
+
+% Spacing
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% --------------------------------------------------
+% Header and footer
+% --------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\course}
+\rhead{\headernames}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+% --------------------------------------------------
+% Hyperref settings
+% --------------------------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    pdftitle={\course\ -- Lab \labno: \labtopic},
+    pdfauthor={\pdfauthorname}
+}
+
+% ==================================================
+% Document
+% ==================================================
+\begin{document}
+
+% --------------------------------------------------
+% Page 1: Title page
+% --------------------------------------------------
+\pagenumbering{Alph}
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    {\LARGE \textbf{Lab Report - Lab Unit \labno}}\\[0.5em]
+    {\Large \labtopic}\\[0.5em]
+    {\large \course}
+
+    \vspace{3cm}
+
+    \begin{tabular}{l l}
+        \toprule
+        \textbf{Lab Member} & \textbf{E-mail} \\
+        \midrule
+        \members
+        \bottomrule
+    \end{tabular}
+
+    \vfill
+    {\large \reportdate}
+\end{titlepage}
+\pagenumbering{arabic}
+
+% --------------------------------------------------
+% Page 2: Content
+% --------------------------------------------------
+\section*{Objective/Physical-Based}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{img/physical.png}
+    \caption{Objective/physical-based view: components of the system and their interactions}
+    \label{fig:physical}
+\end{figure}
+
+\newpage
+
+\section*{Process-Based}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth,height=0.8\textheight,keepaspectratio]{img/functional.png}
+    \caption{Process-based view: sequence of actions incl.\ alternate courses and exceptions}
+    \label{fig:functional}
+\end{figure}
+
+\newpage
+
+\section*{Time-Based}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{img/time.png}
+    \caption{Time-based view: system behaviour and data lifetime over one parking session}
+    \label{fig:time}
+\end{figure}
+
+
+% --------------------------------------------------
+% Page 3: AI disclosure
+% --------------------------------------------------
+\clearpage
+\section*{Statement on the Use of AI}
+\addcontentsline{toc}{section}{Statement on the Use of AI}
+
+In preparing this lab report, \aitool{} was used as a generative AI tool
+exclusively to assist with the following tasks:
+
+\begin{itemize}
+    \item creating and designing the \LaTeX{} layout,
+    \item drafting the three system sketches (draw.io),
+    \item checking spelling and grammar,
+    \item research.
+\end{itemize}
+
+The \LaTeX{} template of this report, including this statement, was created
+with the assistance of the AI tool and reviewed and adapted by the lab members.
+First drafts of the three system sketches were generated by the AI tool based on
+the use case description written by the lab members; the lab members subsequently
+reviewed, revised and finalized the sketches. Apart from that, all content,
+results and conclusions were developed independently; no AI-generated text was
+adopted. The tool was used in line with
+the principles of \emph{responsible AI use} (transparency, verifiability, human
+oversight). Sources found through research were checked for accuracy
+independently. All content was reviewed, validated and finally approved by the
+lab members (cf.\ FH Salzburg AI guideline \emph{KI-Richtlinie}, version~1.0,
+ch.~1.3 and 2.1.2).
+
+\label{LastPage}
+\end{document}
